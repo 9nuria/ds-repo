@@ -84,3 +84,43 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+##Data Wrangling with 'dplyr'
+```{r dplyr}
+
+
+gapminder <- readr::read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv")
+
+###usel functions
+head(gapminder)
+tail(gapminder)
+head(gapminder, 30)
+str(gapminder)
+names(gapminder)
+
+c(nrow(gapminder),ncol(gapminder))
+
+
+
+head(gapminder$country)
+
+filter(gapminder,lifeExp<29)
+filter(gapminder,country=="Mexico")
+
+sweden<-filter(gapminder,country=="Sweden")
+x <- mean(sweden$lifeExp)
+mean(filter(gapminder,country=="Sweden")$lifeExp)
+
+###    '%>%'
+
+gapminder %>% head(3)
+head(gapminder,3)
+
+y <- gapminder %>% 
+  filter(country=="Sweden") %>% 
+  summarize(mean_lifeExp=mean(lifeExp))
+
+
+
+
+```
