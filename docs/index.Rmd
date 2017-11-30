@@ -18,11 +18,31 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r scatterplot}
 library(tidyverse)
 
+
 mpg
-Formaldehyde
-mpg
-g <- ggplot(data=mpg, aes(x=displ,y=hwy))
-g + geom_point()
+g <- ggplot(data=mpg, aes(x=displ,y=hwy))+
+ geom_point()
+
+```
+##Color
+```{r color}
+g <- ggplot(data=mpg, aes(x=displ,y=hwy, color=class)) +
+ geom_point()
+g
+
+```
+##but need a b&W figure
+```{r b&w}
+g <- ggplot(data=mpg, aes(x=displ,y=hwy, shape=class))+
+ geom_point()
+g
+
+```
+##Size
+```{r size}
+g <- ggplot(data=mpg, aes(x=displ,y=hwy, size=class,color=fl))+
+ geom_point(alpha=0.4)
+g
 ```
 
 ## Including Plots
